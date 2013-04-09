@@ -1,0 +1,60 @@
+<?php 
+$output->post_check();
+ob_start();
+global $page, $DB, $output, $data, $cat, $mod,$conf;
+
+$output->title('Восстановление доступа к сайту');
+?>
+	<div id="admin">
+<?
+
+if (isset($_POST['email'])){
+	$output->post_check();
+
+        if(!strstr($post['email'],$conf[$settings['email_domain']])) {
+            $post['email'] = $post['email'].$conf[$settings['email_domain']];
+        }
+
+	$DB->query('SELECT * from `users` WHERE `email`=\''.$post['email'].'\' LIMIT 1');
+	if ($DB->get_num_rows()){
+		$user_info = $DB->fetch_row();
+		// генерируем ключ для смены пароля
+		$key = sha1($post['email'].time().'соль!');
+		$DB->query('UPDATE `users` SET `passtime`="'.time().'", `passkey`="'.$key.'" WHERE `id` = "'.$user_info['id'].'" LIMIT 1');
+
+		// высылает письмо с ключом активации на твой ящик
+		$output->send_mail('Восстановление доступа на сайт','account_reminder',$post['email']);
+
+		echo '<p><span class="error">На ваш e-mail было выслано письмо с инструкциями по восстановлению пароля.</span></p>';
+                 $Log->event("reminder", 'users', $user_info['id'], ip(), 0);
+
+	} else {
+		echo '<p><span class="error">Введёные вами данные неверны! Попробуйте еще раз.</span></p>';
+	}
+
+} else {
+	if ( $access )
+	{
+		$output->redirect('/');
+	}
+	else
+	{
+		echo '
+        <form class="email" action="#" method="post" style="text-align:center;">
+
+		<label for="email">Ваш корпоративный e-mail</label><br />
+        <input type="text" name="email" id="email" />
+<br /><br />
+		<input type="submit" value="Восстановить доступ"  />
+		</form>
+		
+';
+	}
+}
+?>
+<br class="clear" />
+</div>
+<?
+$page[] = ob_get_contents();
+ob_end_clean();
+?>

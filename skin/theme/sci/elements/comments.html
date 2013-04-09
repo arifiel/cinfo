@@ -1,0 +1,115 @@
+<!-- Comments --> 
+<div class="comments">
+    <!-- Comments Header -->
+    <div class="header">
+        <? $DB->query('SELECT id from `comment`
+					WHERE `prefix`="'.$pathname[0].'" AND `prefix_id`="'.$pathname[1].'" AND `active` > 0 ORDER BY `added` DESC');
+					?>
+        <h3>Комментарии (<span id="count-comments"><?=$DB->get_num_rows(); ?></span>)</h3>
+        <a name="comments" ></a>
+    </div>
+
+     <!-- /Comments Header -->
+
+   
+    <? {?>
+    <span id="comment-children-0"></span>
+    <div class="comment"><div class="content"><div class="text" id="comment_preview_0" style="display: none;"></div></div></div>
+
+    <? if($output->AuthCheck()) {?>
+    <div style="display: block;" id="reply_0" class="reply">
+        
+        <form action="<?=$docroot?>/comments/add/<?=$pathname[1];?>?path=<?=$mod['path'];?>" method="post" name="form_comment" id="form_comment" enctype="multipart/form-data">
+            <input type="hidden" name="file_default_id" id="file_default_id" value="0" />
+
+
+        <textarea name="review" class="forbbcode" id="review" onclick="setNewField(this.name, document.getElementById('dle-comments-form'));"></textarea>
+
+        <!--    <textarea name="review" id="review" style="width: 100%; height: 100px;"></textarea>
+        -->
+
+            <br /><input type="submit" id="submit_comment" name="submit_comment" onclick="return check_add_comment(this.form)" value="Добавить комментарий" />
+
+
+
+        </form>
+    </div>
+    <?}?>
+    <?}
+
+    $c=$DB->query('SELECT * from `comment`
+        	WHERE `prefix`="'.$mod['path'].'" AND `prefix_id`="'.$pathname[1].'" ORDER BY `added` DESC');
+
+
+    global $first_flag;
+    $first_flag=true;
+    while($comment = $DB->fetch_row($c)){
+
+    if(!$comment['active'] && $user['usertype']==2 || $comment['active'])
+    {
+    ?>
+    <? $comment = $output->post_out($comment); ?>
+    <div class="comment" id="comment_id_<?=$comment['id'];?>">
+        <!--						<img src="/images/close.gif" alt="+" title="свернуть/развернуть" class="folding" /> -->
+        <a name="comment<?=$comment['id'];?>" ></a>
+        <div id="comment_content_id_<?=$comment['id'];?>" class="content<? if (isset($user['id']) && ($user['id'] == $comment['user_id'])) { echo ' self';} ?>">
+
+            <div class="tb" <?=!$comment['active']?'style="background-color:#fbb;"':''?>>
+                <div class="tl"><div class="tr"></div></div></div>
+            <div class="text" <?=!$comment['active']?'style="background-color:#fbb;"':''?>>
+                <?=$output->message_show(addslashes($comment['review']),1);
+               
+                ?>
+
+            </div>
+            <div <?=!$comment['active']?'style="background-color:#fbb;"':''?> class="bl">
+            <div class="bbc">
+                <div class="br">
+                   </div></div></div>
+        </div>
+        <div class="info">
+
+            <em style="float:right;margin-right:50px;">
+                <?
+                //$time_to_edit=(time()-$comment['added'])/3600;
+
+                $quote_review = $comment['review'];
+                $quote_review = str_replace("\r\n"," ",$quote_review);
+                $quote_review = str_replace("\n"," ",$quote_review);
+                $quote_review = addslashes($quote_review);
+
+                if($comment['active'] && ($user['usertype'] == 2 || (($first_flag  || strlen($contents=str_replace (" ","", $comment['review']))<2 ) && $user['id'] == $comment['user_id'])))
+                { ?><em><a href="/comments/edit/<?=$comment['id'];?>" class="edit">Редактировать</a></em> <? } ?>
+                
+                <?
+                //Скрытие
+                if($comment['active'] && ($user['usertype'] == 2 || (($first_flag  || strlen($contents=str_replace (" ","", $comment['review']))<2 ) && $user['id'] == $comment['user_id'])))
+                { ?><em><a href="/comments/hide/<?=$comment['id'];?>" class="delete">Удалить</a></em> <? } ?>
+
+                 <?
+                //Восстановление
+                if(!$comment['active'] && $user['usertype'] == 2)
+                { ?><em><a href="/comments/repair/<?=$comment['id'];?>" class="delete">Восстановить</a></em> <? } ?>
+
+
+                <? if( $user['usertype'] == 2 && !$comment['active'])
+                { ?><em><a href="/comments/delete/<?=$comment['id'];?>" class="delete">Удалить из системы</a></em> <? } ?>
+
+            </em>
+            
+            <strong><?=$comment['user_login'];?></strong> (<?=out_date($comment['added']);?>)
+        </div>
+        <div class="comment-children" id="comment-children-<?=$comment['id'];?>">
+
+
+        </div></div>
+
+    <?	
+        global $first_flag;
+        $first_flag=false;
+    }
+    }
+    ?>
+
+</div>
+<!-- /Comments -->	

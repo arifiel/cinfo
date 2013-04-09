@@ -1,0 +1,105 @@
+
+<script type="text/javascript">
+//Функция, которая добавляет форму в конец страницы
+function appendForm(){
+
+var form = '<form action="/feedback/" method="post" enctype="multipart/form-data">'+
+'<label for="name">Ваше имя:&nbsp;&nbsp;</label>'+
+'<input placeholder="Введите своё имя или псевдоним" type="text" name="name" value="" id="name" /><br /><br />'+
+'<label for="email">Ваш email:&nbsp;&nbsp;</label>'+
+'<input placeholder="Введите свой email для обратной связи" type="email" name="email" value="" id="email" /><br /><br />'+
+'<label for="review">Ваше сообщение:&nbsp;&nbsp;</label>'+
+'<textarea name="review" style="max-width:60%; min-height:130px" id="review" placeholder="Введите своё сообщение нам"></textarea>'+
+'<br /><p style="text-align:center">'+
+'<input style="margin:0 auto;font-size:1em; margin-top:1em; padding: 0.5em 2em 0.5em 2em" type="submit" value="Оправить!" />'+
+'</p></form>';
+
+$('#feed_content').append(form);
+}
+//Запустить функцию после загрузки документа
+window.onload = appendForm;
+</script>
+
+<div id='feed_open' class="feedback" 
+	style="-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #eee;
+    border-color: #ddd;
+    border-radius: 8px 8px 8px 8px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+    color: #eee;
+    font: 17px Verdana;
+    height: 185px;
+    left: 100%;
+    margin-left: -34px;
+    margin-top: -100px;
+    opacity: 0.9;
+    padding-top: 5px;
+	padding-left: 5px;
+    position: fixed;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.45);
+    top: 45%;
+    width: 100px;
+    z-index: 100;">
+	<img 
+		onclick=" 
+		//$('#feed_open').hide('slow');	
+		$('#feed_content').animate({
+	
+		left: '-=426'
+		}, 1000, function() {
+		
+		// Animation complete.
+		});
+		"
+	style="cursor:pointer; width:30px; height:180px" src="/i/feedback.png" alt="Напишите нам" />
+</div>
+
+
+<div id='feed_content' class="feedback" style="
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #eee;
+    border-color: #ddd;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+    color: #eee;
+    font: 17px Verdana;
+    height: 300px;
+    margin-left: 100%;
+    margin-top: -150px;
+    padding: 5px;
+	padding-right:50px;
+	position: fixed;
+    text-align: left;
+    text-decoration: none;
+    top: 45%;
+    width: 400px;
+	left:4px;
+    z-index: 100;">
+<p style="width:100%; text-align:right;">
+<a style="cursor:pointer;" onclick=" 
+		
+		$('#feed_content').animate({
+
+		left: '+=426'
+		}, 1000, function() {
+		
+		// Animation complete.
+		});
+		$('#feed_open').show();
+		"><strong>Закрыть</strong></a></p>
+		
+</div>

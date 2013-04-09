@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title><?=(isset($title)?($title.' :: '):'').$conf['sitename']?></title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name='yandex-verification' content='53e007f0004b28a4' />
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+		<!--[if lt IE 9]>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+		<![endif]-->
+
+	<?if(isset($description) && strlen($description)){
+	$description = str_replace("\n",' ',$description);
+	$description = str_replace("\r",' ',$description);
+	$description=strip_tags($description).' купить билет';
+	?><meta name="description" content="<?=$description;?>" />
+	<?}?><?if(isset($pathname[0]) && ($pathname[0]=='gig' || $pathname[0]=='map')){?><meta property="og:image" content="http://concertinfo.ru/data/events/covers/<?=$pathname[1]?>.jpg" />
+	<link rel="image_src" href="/data/events/covers/<?=$pathname[1]?>.jpg" />
+	    
+	<script src="http://api-maps.yandex.ru/1.1/index.xml?key=ALywS04BAAAAahxYIwIA_Rdm_cp1sA-VziVVb_4HJQvtbDgAAAAAAAAAAAD7BQ_yHtNAoFk3sJVmUia8g2lneg==" type="text/javascript"></script>
+
+	<?} else {?><meta property="og:image" content="/i/logo.png" />
+	<link rel="image_src" href="/i/logo.png" />
+        <?}?>
+
+	
+	<link href="<?=$docroot?>/css/twitter-bootstrap-cabae13/bootstrap-1.2.0.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$docroot?>/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$docroot?>/css/datepicker.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$docroot?>/css/easyslider.css" rel="stylesheet" type="text/css" />
+	<link href="<?=$docroot?>/css/jquery.lightbox.css" rel="stylesheet" type="text/css" />
+
+	<? if((int)date('m',time())==12 ||
+		(int)date('m',time())==1 ||
+		(int)date('m',time())==2)
+		{?>
+		<style type="text/css">
+		.page{background: #fff url('/i/bg_wall.gif'); }
+		</style>
+		
+		<?}
+		
+	?>
+	
+	<meta name="author" content="Concertinfo.Ru, 2011<?if(date("Y")>2011) {echo '-'.date("Y"); }?>" />
+	<meta name="keywords" content="Концерт, Rock, Metal, Рок, Метал, Металл, Heavy Metal, Black Metal, Punk, Панк, Афиша, Санкт-Петербург, СПб, Питер, Гиг, Gig, Мероприятие, Event, Событие" />        
+
+	<script type="text/javascript" src="<?=$docroot?>/js/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="<?=$docroot?>/js/jquery.datepicker.js"></script>
+	<script type="text/javascript" src="<?=$docroot?>/js/easySlider1.7.js"></script>
+	<script type="text/javascript" src="<?=$docroot?>/js/jquery.lightbox.min.js"></script>
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-23030742-2']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+		
+         <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+
+         <script type="text/javascript">
+             VK.init({apiId: 2443772, onlyWidgets: true});
+        </script>
+
+    </head>
+
+ <body>
+
+		<!-- Yandex.Metrika counter -->
+		<div style="display:none;"><script type="text/javascript">
+		(function(w, c) {
+			(w[c] = w[c] || []).push(function() {
+				try {
+					w.yaCounter9793330 = new Ya.Metrika({id:9793330, enableAll: true, trackHash:true});
+				}
+				catch(e) { }
+			});
+		})(window, "yandex_metrika_callbacks");
+		</script></div>
+ 
+		<script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
+		<noscript><div><img src="//mc.yandex.ru/watch/9793330" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		<!-- /Yandex.Metrika counter -->
+
+ 			
+			
+ 		
+		<div class='page'>
+
+		<div class="wrap">
+			
+			<?
+			if(1 || $output->AuthCheck('admin')) {?>
+			
+			
+			<div style="width:100%; padding-top:1em;background-color:#1b1b1b; margin:0 auto; clear:both; text-align:center; margin-bottom:-0.2em;">
+			
+				<?if(time()<strtotime('24.02.2013')){?>
+				<a rel="nofollow" target="_blank" href="http://concertinfo.ru/gig/1112"><img style="height: 60px; width:468px;" src="/data/events/pr/1112.gif" alt="Лешак, Svartby, Fangorn, Nordverg, 23 февраля 2013, Арктика" /></a>
+				<?} elseif(time()<strtotime('01.04.2013')){?>				
+				<a rel="nofollow" target="_blank" href="http://vk.com/bfm2spb"><img style="height: 60px; width:468px;" src="/data/events/pr/1176.gif" alt="Black Fucking Madness 2, 31 марта 2013, Улитка на склоне" /></a>
+				<?}?>
+				
+				<?if(time()<strtotime('01.04.2013')){?>
+				<a rel="nofollow" target="_blank" href="http://vk.com/bfm2spb"><img style="height: 60px; width:468px;" src="/data/events/pr/1176.gif" alt="Black Fucking Madness 2, 31 марта 2013, Улитка на склоне" /></a>
+				<?}?>
+			</div>
+			
+			<?}
+			?>
+            <div id="header">
+			
+			
+			
+
+			<nav style="padding-top:0.1em; padding-bottom:0;">
+		
+		   
+            <div style="float:right; max-width: 240px; margin-top: -1em; margin-left:-3em; font-size: 0.4em">
+
+            <?if(!$output->AuthCheck()) {?>
+            
+			
+	
+			<span style="font-size:1.2em; margin-top:-1em">
+			<a href="<?=$docroot?>/login/">Войти</a><br />
+            <a href="<?=$docroot?>/registration/">Регистрация</a>
+			</span>
+			
+            <?} else {?>
+            <p style="font-size:2em;margin-top: -0.5em; text-align: right;"><strong><?=$user['login']?></strong></p>
+            <p style="font-size:1.5em; text-align: right">
+            </p>
+            <a href="<?=$docroot?>/users/<?=$user['id']?>">Профиль</a> |<a href="<?=$docroot?>/logout/">Выход</a>
+            
+            <?}?>
+
+            </div>
+
+            <?
+            $menu[''] = 'Концерты';
+
+            $menu['events'] = 'Добавить';
+			
+            $menu['about'] = 'О нас';
+
+			if($output->AuthCheck('admin')) {
+            $menu['feedback_view'] = 'Сообщения';
+			}
+			
+            foreach ($menu as $k => $v) {
+                echo '<a href="'.$docroot.'/'.$k.'" ';
+
+                if (isset($pathname[0]) && $pathname[0] == $k  || $k=='' & !isset($pathname[0]))
+                {
+                    echo ' class="visited" ';
+                }
+				              
+                echo '>'.$v.'</a>'."
+            ";
+            }
+            ?>
+
+
+            </nav>
+            </div>
+
+			<div style="position:absolute; left:100%; width:180px; margin-left:-320px; margin-top:-50px">
+				<a href="<?=$docroot?>/rss/"><img alt="RSS лента" src="<?=$docroot?>/i/ico/24/feed.png"></a>
+				<a href="http://vkontakte.ru/concertinfo"><img src="<?=$docroot?>/i/ico/24/vkontakte.png" alt="Вконтакте" /></a>
+				<a href="http://twitter.com/concert_info"><img src="<?=$docroot?>/i/ico/24/twitter.png" alt="Twitter" /></a>
+				<a href="http://www.facebook.com/100002984603597"><img src="<?=$docroot?>/i/ico/24/facebook.png" alt="Facebook" /></a>
+				<a href="http://groups.google.com/group/concert-info-ru"><img src="<?=$docroot?>/i/ico/24/google.png" alt="Google Groups" /></a>
+				<a href="http://concertinfo.livejournal.com"><img src="<?=$docroot?>/i/ico/24/livejournal.png" alt="LiveJournal" /></a>
+			</div>
+			
+
+			
+     <div class="concert_content" style="overflow:hidden; padding-left:0.5em; margin-right:0.2em">
+
+			
+ 
+ <?=$page_result?>
+ </div>
+
+
+			<br class="clear"/>
+			</div>
+			</div>
+            <div class="footer" id="footer">
+                <div class="copyright">
+				<span style="float:left; text-align: left; color:gray">
+                <?
+                $DB->query('SELECT count(id) as count, max(added) as last FROM events WHERE `active`=1');
+                if($DB->get_num_rows())
+                {
+                    $info = $DB->fetch_row();
+                    if(!empty($info))
+                    {?>
+                    Всего в базе: <?=$info['count']?> мероприятий, последнее обновление: <?=out_date($info['last'],1,0)?>.<br />
+                   <?}
+                }
+				
+				$DB->query('SELECT count(id) as count, max(added) as last FROM events WHERE `active`=1 AND `events`.`end` > '.time().'');
+                if($DB->get_num_rows())
+                {
+                    $info = $DB->fetch_row();
+                    if(!empty($info))
+                    {?>
+                    Актуальных мероприятий: <?=$info['count']?>
+                   <?}
+                }
+				?>
+				<br />В очереди:<? 
+				$DB->query('SELECT count(id) as count, max(added) as last FROM events WHERE `active`=0');
+                if($DB->get_num_rows())
+                {
+                    $info = $DB->fetch_row();
+                    if(!empty($info))
+                    {?>
+                     <?=$info['count']?>
+                   <?}
+                }
+				else
+				{
+					echo "0";
+				}
+
+                ?>
+				</span>
+				<a href="/pr/">Рекламодателям</a> |
+				<a href="<?=$docroot?>/events/add">Добавить концерт</a> |
+				<a href="<?=$docroot?>/feedback">Обратная связь</a> |
+				<a href="#">Ссылки</a>
+				<br />
+				
+                &copy; Concertinfo.Ru, 2011<?if(date("Y")>2011) {echo '-'.date("Y"); }?><br /><br />
+
+        <!-- Rating@Mail.ru counter -->
+	<script type="text/javascript">//<![CDATA[
+	var a='';js=10;d=document;
+	try{a+=';r='+escape(d.referrer);}catch(e){}try{a+=';j='+navigator.javaEnabled();js=11;}catch(e){}
+	try{s=screen;a+=';s='+s.width+'*'+s.height;a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;}catch(e){}
+	try{if(typeof((new Array).push('t'))==="number")js=13;}catch(e){}
+	try{d.write('<a href="http://top.mail.ru/jump?from=2086453"><img src="http://d6.cd.bf.a1.top.mail.ru/counter?id=2086453;js='+js+
+	a+';rand='+Math.random()+'" alt="Рейтинг@Mail.ru" style="border:0;" height="1" width="1" \/><\/a>');}catch(e){}//]]></script>
+	<noscript><p><a href="http://top.mail.ru/jump?from=2086453"><img src="http://d6.cd.bf.a1.top.mail.ru/counter?js=na;id=2086453"
+	style="border:0;" height="1" width="1" alt="Рейтинг@Mail.ru" /></a></p></noscript>
+	<!-- //Rating@Mail.ru counter -->
+	
+				<?if($output->AuthCheck('admin')) {?>
+		<a href="http://yandex.ru/cy?base=0&amp;host=concertinfo.ru"><img src="http://www.yandex.ru/cycounter?concertinfo.ru" width="88" height="31" alt="Яндекс цитирования" style="border:0" /></a>
+	   <a href="http://www.prchecker.info/" title="Display Pagerank" target="_blank"><img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL2NvbmNlcnRpbmZvLnJ1Lw==&tag=2" alt="Display Pagerank" style="border:0;" /></a>
+	<?}?>
+	
+        <?if($output->AuthCheck('admin')) {?>
+        <!-- Rating@Mail.ru counter -->
+        <a href="http://top.mail.ru/jump?from=2086453">
+        <img src="http://d6.cd.bf.a1.top.mail.ru/counter?id=2086453;t=52;l=1"
+        style="border:0;"
+
+        height="31" width="88"
+        alt="Рейтинг@Mail.ru" /></a>
+        <!-- //Rating@Mail.ru counter -->
+                <?}?>
+				
+		<!-- begin of Top100 code -->
+		<?if(!$output->AuthCheck('admin')) {?>
+        <div style="overflow:auto; width:1px; height:1px">
+		<?}?>
+		<script id="top100Counter" type="text/javascript"
+		src="http://counter.rambler.ru/top100.jcn?2651993"></script>
+		<noscript>
+		<a href="http://top100.rambler.ru/navi/2651993/">
+		<img src="http://counter.rambler.ru/top100.cnt?2651993" alt="Rambler's Top100"
+		style="border:0" />
+		</a></noscript>
+		<!-- end of Top100 code -->
+		<?if(!$output->AuthCheck('admin')) {?>
+        </div>
+		<?}?>
+		
+		</div>
+	
+                </div>
+
+        <div id="footer_bg">
+            </div>
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+	
+     </body>
+</html>

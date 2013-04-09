@@ -1,0 +1,5 @@
+#Если www.glavnoye-zerkalo.ru главное зеркало сайта, то  
+#robots.txt для всех сайтов из группы зеркал выглядит так 
+User-Agent: *
+Disallow: /cgi-bin
+Host: www.concertinfo.ru
